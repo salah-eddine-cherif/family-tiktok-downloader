@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+  <rect width="1200" height="630" fill="#020617"/>
+  <circle cx="160" cy="120" r="250" fill="#ec4899" opacity=".25"/>
+  <circle cx="1020" cy="520" r="280" fill="#22d3ee" opacity=".22"/>
+  <rect x="70" y="70" width="1060" height="490" rx="44" fill="#0f172a" opacity=".9" stroke="#334155"/>
+  <text x="105" y="190" fill="white" font-size="64" font-family="Arial" font-weight="800">TikTok Downloader</text>
+  <text x="105" y="270" fill="#cbd5e1" font-size="36" font-family="Arial">Videos • Stories • Photos</text>
+  <rect x="105" y="340" width="620" height="76" rx="22" fill="white"/>
+  <text x="137" y="390" fill="#0f172a" font-size="28" font-family="Arial">Paste TikTok link...</text>
+  <rect x="747" y="340" width="250" height="76" rx="22" fill="#ec4899"/>
+  <text x="795" y="390" fill="white" font-size="28" font-family="Arial" font-weight="800">Detect Preview</text>
+  <text x="105" y="485" fill="#e0f2fe" font-size="28" font-family="Arial">Preview before download. Save what you need.</text>
+</svg>

@@ -1,0 +1,15 @@
+services:
+  - type: web
+    name: family-tiktok-downloader
+    runtime: docker
+    plan: free
+    autoDeploy: true
+    healthCheckPath: /health
+    maxShutdownDelaySeconds: 60
+    envVars:
+      - key: FAMILY_USERNAME
+        sync: false
+      - key: FAMILY_PASSWORD
+        sync: false
+      - key: PYTHONUNBUFFERED
+        value: "1"

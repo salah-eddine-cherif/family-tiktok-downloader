@@ -1,0 +1,14 @@
+.venv/
+venv/
+__pycache__/
+*.py[cod]
+.env
+outputs/*
+!outputs/.gitkeep
+uploads/*
+!uploads/.gitkeep
+playwright_profiles/
+debug_tiktok_carousel/
+audit_reports/
+*.bak_*
+.DS_Store
