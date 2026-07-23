@@ -5,7 +5,6 @@ services:
     plan: free
     autoDeploy: true
     healthCheckPath: /health
-    maxShutdownDelaySeconds: 60
     envVars:
       - key: FAMILY_USERNAME
         sync: false
