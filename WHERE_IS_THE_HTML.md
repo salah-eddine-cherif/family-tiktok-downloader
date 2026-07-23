@@ -1,6 +1,6 @@
 # Where the HTML lives
 
-The Grabfrog HTML shell is:
+The Ed Salah HTML shell is:
 
 - `static/index.html`
 

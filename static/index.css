@@ -566,7 +566,7 @@ button { -webkit-tap-highlight-color: transparent; }
   color: var(--ink);
 }
 .seo-section::before {
-  content: "Why people use Grabfrog";
+  content: "Why people use Ed Salah";
   display: block;
   margin-bottom: 24px;
   color: var(--frog-deep);

@@ -1410,7 +1410,7 @@ def render_index(tool: str = "all", lang: str = "en", base_url: str = "") -> str
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>{html_escape(page['title'])} · Grabfrog</title>
+  <title>{html_escape(page['title'])} · Ed Salah</title>
   <meta name="description" content="{html_escape(page['description'])}">
   <meta name="robots" content="index, follow">
   <link rel="canonical" href="{base}{paths[tool]}">
@@ -1428,19 +1428,19 @@ def render_index(tool: str = "all", lang: str = "en", base_url: str = "") -> str
   <meta name="twitter:title" content="{html_escape(page['title'])}">
   <meta name="twitter:description" content="{html_escape(page['description'])}">
   <meta name="twitter:image" content="{base}/static/assets/og-tiktok-downloader.svg">
-  <link rel="stylesheet" href="/static/index.css?v=grabfrog_ui_v1" />
+  <link rel="stylesheet" href="/static/index.css?v=ed_salah_ui_v1" />
 </head>
 <body data-selected-tool="{tool}" {body_lang}>
 <script>window.PLATFORM_SLUG = "tiktok";</script>
 
 <header class="site-header">
   <div class="header-inner">
-    <a class="brand" href="{paths['all']}" aria-label="Grabfrog TikTok Downloader home">
+    <a class="brand" href="{paths['all']}" aria-label="Ed Salah TikTok Downloader home">
       <span class="brand-mark" aria-hidden="true">
         <span class="frog-eye frog-eye-left"></span><span class="frog-eye frog-eye-right"></span>
         <span class="frog-smile"></span>
       </span>
-      <span class="brand-copy"><strong>Grabfrog</strong><small>{html_escape(ui['brand_note'])}</small></span>
+      <span class="brand-copy"><strong>Ed Salah</strong><small>{html_escape(ui['brand_note'])}</small></span>
     </a>
     <nav class="header-links" aria-label="Primary navigation">
       <a href="{paths['video']}">{TAB_LABELS[lang]['video']}</a>
@@ -1516,13 +1516,13 @@ def render_index(tool: str = "all", lang: str = "en", base_url: str = "") -> str
 
 <footer class="site-footer">
   <div class="footer-inner">
-    <div class="footer-brand"><span class="footer-frog">●</span><strong>Grabfrog</strong></div>
+    <div class="footer-brand"><span class="footer-frog">●</span><strong>Ed Salah</strong></div>
     <p>{html_escape(ui['footer'])}</p>
     <small>{html_escape(ui['privacy'])}</small>
   </div>
 </footer>
 
-<script src="/static/index.js?v=grabfrog_ui_v1"></script>
+<script src="/static/index.js?v=ed_salah_ui_v1"></script>
 </body>
 </html>"""
 

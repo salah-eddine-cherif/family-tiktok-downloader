@@ -1,7 +1,7 @@
-# Grabfrog UI changelog
+# Ed Salah UI changelog
 
 - Replaced the dark glass interface with a warm cream, frog-green, yellow, coral, and cyan visual system.
-- Added Grabfrog brand header and frog mark.
+- Added Ed Salah brand header and frog mark.
 - Added Instrument Serif, DM Sans, and Caveat typography from the supplied HTML reference.
 - Rebuilt the responsive downloader card, tool tabs, URL field, preview cards, download buttons, progress state, SEO sections, and footer.
 - Added clipboard Paste and input Clear controls.

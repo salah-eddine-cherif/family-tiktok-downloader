@@ -1,15 +1,15 @@
-# Grabfrog TikTok UI Update
+# Ed Salah TikTok UI Update
 
-This package contains the active project files with the new Grabfrog-style responsive HTML/CSS interface.
+This package contains the active project files with the new Ed Salah-style responsive HTML/CSS interface.
 
 ## Replace your current files
 
 From your existing project folder:
 
 ```bash
-cp app.py app.py.before_grabfrog_ui
-cp static/index.css static/index.css.before_grabfrog_ui
-cp static/index.js static/index.js.before_grabfrog_ui
+cp app.py app.py.before_ed_salah_ui
+cp static/index.css static/index.css.before_ed_salah_ui
+cp static/index.js static/index.js.before_ed_salah_ui
 ```
 
 Then copy the new `app.py` and `static/` folder over the existing project.
