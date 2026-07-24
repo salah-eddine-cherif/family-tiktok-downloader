@@ -754,39 +754,37 @@ def get_preview_info(url: str) -> dict:
     cmd = ["yt-dlp", "-J", "--no-playlist", url]
     result = run_cmd(cmd, timeout=60)
 
-    # Important: TikTok /photo/ links can fail in yt-dlp.
-    # If that happens, do NOT show generic "unsupported"; use oEmbed thumbnail preview.
+    # TikTok /photo/ links can fail in yt-dlp, so photo links may use a
+    # metadata fallback. Video/story failures must not be presented as a
+    # successful preview with a download button.
     if result.returncode != 0:
-        err = result.stderr.strip()
+        err = (result.stderr.strip() or result.stdout.strip() or "TikTok preview failed")
+        err_lower = err.lower()
 
-        if url_kind in {"image", "story", "video"}:
-            # Try TikTok oEmbed first for thumbnail/title.
+        if url_kind == "image":
             embed_preview = preview_from_oembed(
                 url,
                 url_kind,
-                "Preview loaded with TikTok embed metadata because the downloader extractor could not read full media metadata yet."
+                "Photo / Carousel link detected, but TikTok did not expose the full media to this server session."
             )
 
-            # If oEmbed gives useful data, use it.
-            if embed_preview.get("thumbnail") or embed_preview.get("title") not in {"TikTok image", "TikTok video", "TikTok story", "TikTok media"}:
+            if embed_preview.get("thumbnail") or embed_preview.get("title") not in {"TikTok image", "TikTok media"}:
                 return embed_preview
 
-            # Final fallback: classify from URL path so /photo/ still becomes Photo / Carousel.
             return preview_from_url_only(
                 url,
                 url_kind,
-                "This TikTok link was classified from the URL path. A thumbnail was not available, but the media type is still detected."
+                "Photo / Carousel link detected, but a preview was not available from this server session."
             )
 
-        return {
-            "kind": "unknown",
-            "title": "TikTok media",
-            "uploader": "",
-            "thumbnail": "",
-            "duration": "",
-            "items": [],
-            "warning": err[-500:] or "Could not load preview metadata.",
-        }
+        if "ip address is blocked" in err_lower or "blocked from accessing this post" in err_lower:
+            detail = "TikTok blocked this hosted server's IP address. The link may still work from your local computer or another network."
+        elif "no impersonate target is available" in err_lower:
+            detail = "TikTok rejected the hosted request. Browser impersonation support is being installed; redeploy and try again."
+        else:
+            detail = "TikTok could not load this post from the hosted server. Try another public link or use the local version."
+
+        raise HTTPException(status_code=502, detail=detail)
 
     try:
         info = json.loads(result.stdout)
@@ -3573,7 +3571,16 @@ def download_with_ytdlp(url: str, mode: str):
 
     if result.returncode != 0 and not files:
         msg = result.stderr.strip() or result.stdout.strip() or "TikTok download failed"
-        raise HTTPException(status_code=500, detail=msg[-700:])
+        msg_lower = msg.lower()
+
+        if "ip address is blocked" in msg_lower or "blocked from accessing this post" in msg_lower:
+            detail = "TikTok blocked this hosted server's IP address. Try the local version or another network."
+        elif "no impersonate target is available" in msg_lower:
+            detail = "TikTok rejected the hosted request because browser impersonation support is unavailable."
+        else:
+            detail = "TikTok could not download this post from the hosted server. Try another public link or use the local version."
+
+        raise HTTPException(status_code=502, detail=detail)
 
     if mode == "audio":
         mp3_files = [p for p in files if p.suffix.lower() == ".mp3"]
